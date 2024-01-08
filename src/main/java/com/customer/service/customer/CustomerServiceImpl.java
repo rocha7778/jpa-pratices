@@ -2,7 +2,6 @@ package com.customer.service.customer;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.customer.entity.Customer;
@@ -13,11 +12,15 @@ import com.customer.repository.InvoiceRepository;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 	
-	@Autowired
 	private CustomerRepository customerRepository;
-	
-	@Autowired
 	private InvoiceRepository invoiceRepository;
+	
+
+	public CustomerServiceImpl(CustomerRepository customerRepository, InvoiceRepository invoiceRepository) {
+		super();
+		this.customerRepository = customerRepository;
+		this.invoiceRepository = invoiceRepository;
+	}
 
 	@Override
 	public List<Customer> findAll() {
